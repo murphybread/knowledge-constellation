@@ -1,0 +1,327 @@
+{
+  "nodes": [
+    { "id": "KR-000", "label": "기술 스택", "group": 0 },
+    { "id": "KR-010", "label": "Dev", "group": 1 },
+    { "id": "KR-010.00", "label": "Debugging", "group": 2 },
+    {
+      "id": "KR-010.00 a",
+      "label": "VSCode 브레이크 포인트를 활용한 디버깅",
+      "group": 3
+    },
+    { "id": "KR-010.10", "label": "HTML,CSS,JavaScript", "group": 2 },
+    { "id": "KR-010.10 a", "label": "styled-components 간단 소개", "group": 3 },
+    { "id": "KR-010.30", "label": "React, Next", "group": 2 },
+    {
+      "id": "KR-010.30 a",
+      "label": "Hydration 에러: styled-components와 framer-motion동시 사용시 props가 강제로 넘어가면서 생긴 복합적 문제 해결하기",
+      "group": 3
+    },
+    { "id": "KR-010.40", "label": "Node.js", "group": 2 },
+    {
+      "id": "KR-010.40 a",
+      "label": "Node.js 성능 향상: I/O-bound에는 Async와 CPU-bound를 위한 Cluster API vs Worker Threads",
+      "group": 3
+    },
+    { "id": "KR-010.60", "label": "Jest", "group": 2 },
+    {
+      "id": "KR-010.60 a",
+      "label": "신입 개발자가 정리한 Jest 테스트 사용 예시와 환경 구성",
+      "group": 3
+    },
+    { "id": "KR-020", "label": "Ops", "group": 1 },
+    { "id": "KR-020.00", "label": "Git", "group": 2 },
+    {
+      "id": "KR-020.00 a",
+      "label": "Git 특정 환경의 파일만 커밋없이 제외하기",
+      "group": 3
+    },
+    { "id": "KR-020.10", "label": "Docker, Kubernetes", "group": 2 },
+    {
+      "id": "KR-020.10 a",
+      "label": "엉망진창 개발 환경, 도커가 등장한 뒤 (feat. 라마, 깃랩)",
+      "group": 3
+    },
+    {
+      "id": "KR-020.10 b",
+      "label": "Kaniko와 credStore 및 Multistage 활용",
+      "group": 3
+    },
+    { "id": "KR-020.10 c", "label": "Kops와 eksctl 설치하기", "group": 3 },
+    {
+      "id": "KR-020.10 d",
+      "label": "Helm 사용하기 ArgoCD, Loki, Grafana",
+      "group": 3
+    },
+    { "id": "KR-020.20", "label": "Cloud", "group": 2 },
+    {
+      "id": "KR-020.20 a",
+      "label": "클라우드를 사용할 때와 사용시 고려 요소",
+      "group": 3
+    },
+    { "id": "KR-100", "label": "프로젝트 경험", "group": 0 },
+    { "id": "KR-110", "label": "개인 프로젝트", "group": 1 },
+    {
+      "id": "KR-110.00",
+      "label": "디스코드 베스트 포스트 추천 봇 제작기",
+      "group": 2
+    },
+    {
+      "id": "KR-110.00 a",
+      "label": "디스코드 베스트 포스트 추천 봇 만들기 1편 - 프로덕션환경에서 기존 기능 수행하기 (feat. 처음보는 10008에러 해결)",
+      "group": 3
+    },
+    {
+      "id": "KR-110.00 b",
+      "label": "디스코드 베스트 포스트 추천 봇 만들기 2편 -  Mock데이터로 10008에러 데이터도 수집하기 그 와중에 또다시 발생한 모든메시지0인 예외 케이스",
+      "group": 3
+    },
+    {
+      "id": "KR-110.00 c",
+      "label": "디스코드 베스트 포스트 추천 봇 만들기 3편 - 파일 읽기 쓰기와 디스코드 봇 커맨드 구현하기",
+      "group": 3
+    },
+    {
+      "id": "KR-110.00 d",
+      "label": "디스코드 베스트 포스트 추천 봇 만들기 4편 - 프로덕션 올리기전 시크릿 제거하기 bfg-repo-cleaner 와 커밋이 2배로 늘어나버린 문제",
+      "group": 3
+    },
+    {
+      "id": "KR-110.00 e",
+      "label": "디스코드 베스트 포스트 추천 봇 만들기 5편 - 클라우드와 크론잡을 통해 24시간 서비스 생성하기",
+      "group": 3
+    },
+    {
+      "id": "KR-110.00 f",
+      "label": "디스코드 베스트 포스트 추천 봇 만들기 6편 -",
+      "group": 3
+    },
+    {
+      "id": "KR-110.10",
+      "label": "(준비 중⏳)LLM에 RAG를 결합하여 내 블로그를 안내해주는 개인 사서",
+      "group": 2
+    },
+    {
+      "id": "KR-110.10 a",
+      "label": "(준비 중⏳)Langchang and Streamlit",
+      "group": 3
+    },
+    { "id": "KR-110.10 b", "label": "(준비 중⏳)RAG 구현", "group": 3 },
+    {
+      "id": "KR-110.10 c",
+      "label": "(준비 중⏳)메모리 , Admin , 프롬프트",
+      "group": 3
+    },
+    { "id": "KR-110.10 4", "label": "(준비 중⏳)배포, 시크릿", "group": 3 },
+    { "id": "KR-110.20", "label": "(준비 중⏳)IT 블로그", "group": 2 },
+    { "id": "KR-110.30", "label": "(준비 중⏳)편의점 프로그램", "group": 2 },
+    {
+      "id": "KR-110.40",
+      "label": "생성형 AI를 이용한 개인 창작 마법 프로젝트",
+      "group": 2
+    },
+    {
+      "id": "KR-110.40 a",
+      "label": "프로젝트 중 겪은 트러블 슈팅 (CORS, 소셜 로그인 등)",
+      "group": 3
+    },
+    { "id": "KR-120", "label": "(준비 중⏳)팀 프로젝트", "group": 1 },
+    { "id": "KR-130", "label": "(준비 중⏳)기업 프로젝트", "group": 1 },
+    { "id": "KR-200", "label": "(준비 중⏳)문제해결 경험", "group": 0 },
+    { "id": "KR-210", "label": "(준비 중⏳)트러블슈팅", "group": 1 },
+    { "id": "KR-300", "label": "(준비 중⏳)협업 경험", "group": 0 },
+    { "id": "KR-310", "label": "(준비 중⏳)개발자간 협업", "group": 1 },
+    { "id": "KR-320", "label": "(준비 중⏳)다분야 협업", "group": 1 },
+    { "id": "KR-400", "label": "성장 경험", "group": 0 },
+    { "id": "KR-410", "label": "개인 학습과 성장", "group": 1 },
+    {
+      "id": "KR-410.00",
+      "label": "우아한테크코스 프리코스 7기 회고록 1개월 기록",
+      "group": 2
+    },
+    {
+      "id": "KR-410.00 a",
+      "label": "우아한테크코스 프리코스 7기 1주차 - 기능 단위 목록과 커밋 메시지",
+      "group": 3
+    },
+    {
+      "id": "KR-410.00 b",
+      "label": "우아한테크코스 프리코스 7기 2주차 - 목표 수정과 depth 및 eslint",
+      "group": 3
+    },
+    {
+      "id": "KR-410.00 c",
+      "label": "우아한테크코스 프리코스 7기 3주차 - 목표 수정과 Jest",
+      "group": 3
+    },
+    {
+      "id": "KR-410.00 d",
+      "label": "우아한테크코스 프리코스 7기 4주차 - 어려운 난이도 일단 구현하기 및 테스트케이스 분석하기",
+      "group": 3
+    },
+    {
+      "id": "KR-410.10",
+      "label": "개발자로서 한 번쯤 생각해볼 고민들",
+      "group": 2
+    },
+    {
+      "id": "KR-410.10 a",
+      "label": "코드를 작성하는 역량과 읽고 분석하는 역량중 더 중요한 것은",
+      "group": 3
+    },
+    { "id": "KR-410.10 b", "label": "데이터 구조 가지고 놀기", "group": 3 },
+    {
+      "id": "KR-410.10 c",
+      "label": "다이어그램 그릴 때 생각해 볼 점",
+      "group": 3
+    },
+    {
+      "id": "KR-410.10 d",
+      "label": "객체지향의 사실과 오해 독후감",
+      "group": 3
+    },
+    { "id": "KR-420", "label": "시스템 설계와 운영 개선", "group": 1 },
+    { "id": "KR-420.00", "label": "운영 지표와 성능 관리", "group": 2 },
+    {
+      "id": "KR-420.00 a",
+      "label": "SLA, SLO, SLI의 차이와 고려할 점",
+      "group": 3
+    },
+    { "id": "KR-P-000", "label": "사색의 기록", "group": 0 },
+    {
+      "id": "KR-P-000 a",
+      "label": "Hodie Vixi(Today I Lived) 오늘 하루도 고생한 스스로에게 해줄 말",
+      "group": 1
+    },
+    {
+      "id": "KR-P-000 b",
+      "label": "스스로 생각했을 때 불가능하다고 포기했던 일을 다시 시도하는 방법",
+      "group": 1
+    },
+    {
+      "id": "KR-P-000 c",
+      "label": "직업을 선택할때 지표를 통해 어느 것이 좋은지 평가해보는 방법",
+      "group": 1
+    },
+    { "id": "KR-P-100", "label": "취미와 놀이터", "group": 0 },
+    {
+      "id": "KR-P-100 a",
+      "label": "지식관리 툴로 옵시디언을 사용하는 이유",
+      "group": 1
+    },
+    {
+      "id": "KR-P-100 b",
+      "label": "모바일웹, 웹앱, 하이브리드앱, 네이티브앱 정리",
+      "group": 1
+    },
+    { "id": "KR-P-200", "label": "(준비 중⏳)마일스톤", "group": 0 },
+    {
+      "id": "KR-P-200 a",
+      "label": "(준비 중)인생에서 기억에 남는 순간",
+      "group": 1
+    },
+    {
+      "id": "KR-P-200 b",
+      "label": "(준비 중)노력 끝에 성취한 목표",
+      "group": 1
+    },
+    { "id": "KR-P-300", "label": "회고", "group": 0 },
+    { "id": "KR-P-310", "label": "주간 회고", "group": 1 },
+    {
+      "id": "KR-P-310 a",
+      "label": "2024년11월3주차 회고: 우아한테크코스 프리코스 7기 정리, next 프레임워크 사용해보기",
+      "group": 2
+    },
+    {
+      "id": "KR-P-310 b",
+      "label": "2024년11월 4주차 회고: 협업 프로젝트시 필요한 것, 회사에 지원하기 위한 항목들의 퀄리티란",
+      "group": 2
+    },
+    {
+      "id": "KR-P-310 c",
+      "label": "2024년12월1주차 회고: hydration 트러블 슈팅과 프론트엔드의 핵심 state와 component",
+      "group": 2
+    },
+    {
+      "id": "KR-P-310 d",
+      "label": "2024년12월 2주차 코딩테스트 준비하기 구현 문제 5시간안에 풀기",
+      "group": 2
+    },
+    { "id": "KR-P-320", "label": "월간 회고", "group": 1 },
+    { "id": "KR-P-330", "label": "연간 회고", "group": 1 },
+    { "id": "KR-P-330 a", "label": "2023년 회고", "group": 2 }
+  ],
+  "links": [
+    { "source": "KR-010", "target": "KR-000" },
+    { "source": "KR-010.00", "target": "KR-010" },
+    { "source": "KR-010.00 a", "target": "KR-010.00" },
+    { "source": "KR-010.10", "target": "KR-010" },
+    { "source": "KR-010.10 a", "target": "KR-010.10" },
+    { "source": "KR-010.30", "target": "KR-010" },
+    { "source": "KR-010.30 a", "target": "KR-010.30" },
+    { "source": "KR-010.40", "target": "KR-010" },
+    { "source": "KR-010.40 a", "target": "KR-010.40" },
+    { "source": "KR-010.60", "target": "KR-010" },
+    { "source": "KR-010.60 a", "target": "KR-010.60" },
+    { "source": "KR-020", "target": "KR-000" },
+    { "source": "KR-020.00", "target": "KR-020" },
+    { "source": "KR-020.00 a", "target": "KR-020.00" },
+    { "source": "KR-020.10", "target": "KR-020" },
+    { "source": "KR-020.10 a", "target": "KR-020.10" },
+    { "source": "KR-020.10 b", "target": "KR-020.10" },
+    { "source": "KR-020.10 c", "target": "KR-020.10" },
+    { "source": "KR-020.10 d", "target": "KR-020.10" },
+    { "source": "KR-020.20", "target": "KR-020" },
+    { "source": "KR-020.20 a", "target": "KR-020.20" },
+    { "source": "KR-110", "target": "KR-100" },
+    { "source": "KR-110.00", "target": "KR-110" },
+    { "source": "KR-110.00 a", "target": "KR-110.00" },
+    { "source": "KR-110.00 b", "target": "KR-110.00" },
+    { "source": "KR-110.00 c", "target": "KR-110.00" },
+    { "source": "KR-110.00 d", "target": "KR-110.00" },
+    { "source": "KR-110.00 e", "target": "KR-110.00" },
+    { "source": "KR-110.00 f", "target": "KR-110.00" },
+    { "source": "KR-110.10", "target": "KR-110" },
+    { "source": "KR-110.10 a", "target": "KR-110.10" },
+    { "source": "KR-110.10 b", "target": "KR-110.10" },
+    { "source": "KR-110.10 c", "target": "KR-110.10" },
+    { "source": "KR-110.10 4", "target": "KR-110.10" },
+    { "source": "KR-110.20", "target": "KR-110" },
+    { "source": "KR-110.30", "target": "KR-110" },
+    { "source": "KR-110.40", "target": "KR-110" },
+    { "source": "KR-110.40 a", "target": "KR-110.40" },
+    { "source": "KR-120", "target": "KR-100" },
+    { "source": "KR-130", "target": "KR-100" },
+    { "source": "KR-210", "target": "KR-200" },
+    { "source": "KR-310", "target": "KR-300" },
+    { "source": "KR-320", "target": "KR-300" },
+    { "source": "KR-410", "target": "KR-400" },
+    { "source": "KR-410.00", "target": "KR-410" },
+    { "source": "KR-410.00 a", "target": "KR-410.00" },
+    { "source": "KR-410.00 b", "target": "KR-410.00" },
+    { "source": "KR-410.00 c", "target": "KR-410.00" },
+    { "source": "KR-410.00 d", "target": "KR-410.00" },
+    { "source": "KR-410.10", "target": "KR-410" },
+    { "source": "KR-410.10 a", "target": "KR-410.10" },
+    { "source": "KR-410.10 b", "target": "KR-410.10" },
+    { "source": "KR-410.10 c", "target": "KR-410.10" },
+    { "source": "KR-410.10 d", "target": "KR-410.10" },
+    { "source": "KR-420", "target": "KR-400" },
+    { "source": "KR-420.00", "target": "KR-420" },
+    { "source": "KR-420.00 a", "target": "KR-420.00" },
+    { "source": "KR-P-000 a", "target": "KR-P-000" },
+    { "source": "KR-P-000 b", "target": "KR-P-000" },
+    { "source": "KR-P-000 c", "target": "KR-P-000" },
+    { "source": "KR-P-100 a", "target": "KR-P-100" },
+    { "source": "KR-P-100 b", "target": "KR-P-100" },
+    { "source": "KR-P-200 a", "target": "KR-P-200" },
+    { "source": "KR-P-200 b", "target": "KR-P-200" },
+    { "source": "KR-P-310", "target": "KR-P-300" },
+    { "source": "KR-P-310 a", "target": "KR-P-310" },
+    { "source": "KR-P-310 b", "target": "KR-P-310" },
+    { "source": "KR-P-310 c", "target": "KR-P-310" },
+    { "source": "KR-P-310 d", "target": "KR-P-310" },
+    { "source": "KR-P-320", "target": "KR-P-300" },
+    { "source": "KR-P-330", "target": "KR-P-300" },
+    { "source": "KR-P-330 a", "target": "KR-P-330" }
+  ]
+}
