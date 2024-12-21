@@ -20,32 +20,27 @@ function checkVaild(stat, fullPath) {
   if (stat.isDirectory()) {
     return Object.values(patterns).some((pattern) => pattern.test(baseName));
   }
-  console.log(prefix, TARGET_PREFIX);
-  if (stat.isFile() && prefix !== TARGET_PREFIX) {
+  if (stat.isFile() && prefix.toLowerCase() !== TARGET_PREFIX.toLowerCase()) {
     return false;
   }
 
   return true;
 }
 
-const results = [];
-
 function findFiles(dir) {
+  const results = [];
   const files = fs.readdirSync(dir);
 
   for (const file of files) {
     const fullPath = path.join(dir, file); // 현재 경로
     const stat = fs.statSync(fullPath);
 
-    console.log(`fullPath ${fullPath}  stat ${stat}`);
     if (!checkVaild(stat, fullPath)) {
       continue;
     }
 
-    console.log(`vaild ${fullPath}`);
-
     if (stat.isDirectory()) {
-      findFiles(fullPath);
+      results.push(...findFiles(fullPath));
     } else {
       results.push(fullPath);
     }
@@ -53,17 +48,64 @@ function findFiles(dir) {
   return results; // 모든 파일 경로 반환
 }
 
-const foundFilePathArray = findFiles(basePath);
-console.log(`foundFilePathArray ${foundFilePathArray}`);
+class Star {
+  #id;
+  #tag = [];
+  #link = [];
+  #title = "";
+  #description = "";
+  #data;
+  #webLink = "";
 
-// if (foundPath) {
-//   fs.readFile(foundPath, "utf-8", (err, data) => {
-//     if (err) {
-//       console.error("파일 읽기 오류:", err);
-//       return;
-//     }
-//     console.log("파일 내용:", data);
-//   });
-// } else {
-//   console.log("파일을 찾을 수 없습니다.");
+  constructor(filePath, data) {
+    this.#id = path.basename(filePath);
+    this.#data = data;
+  }
+
+  initialize() {}
+
+  getStart() {
+    return {
+      id: this.#id,
+      tag: this.#tag,
+      link: this.#link,
+      title: this.#title,
+      description: this.#description,
+      data: this.#data,
+      webLink: this.#webLink,
+    };
+  }
+}
+
+// {
+//   id: "실제 저장된 파일이름",
+//   tag: [tag1,tag2...],
+//   link: [selfFileName, linkedFileName1, linkedFileName2 ...]
+//   title: "메타태그의 타이틀",
+//   description: "메타태그의 디스크립션",
+//   data: "글 본문",
+//   webLink: url,
 // }
+
+async function updateJsonFromFiles(FilePathArray) {
+  const allStars = [];
+  for (const filePath of FilePathArray) {
+    try {
+      const data = await fs.promises.readFile(filePath, "utf-8");
+      const star = new Star(filePath, data);
+      allStars.push(star.getStart());
+    } catch (err) {
+      console.error("파일 읽기 오류:", err);
+    }
+  }
+  return allStars;
+}
+
+async function processFiles() {
+  const FilePathArray = findFiles(basePath);
+
+  const allStars = await updateJsonFromFiles(FilePathArray);
+  console.log(JSON.stringify(allStars.slice(0, 2), null, 2));
+}
+
+processFiles();
