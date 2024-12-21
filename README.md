@@ -49,10 +49,12 @@ link의 1번째 값은 항상 자기 자신의 링크
 
 ```
 {
-  id: 실제 저장된 파일이름,
+  id: "실제 저장된 파일이름",
   tag: [tag1,tag2...],
   link: [selfFileName, linkedFileName1, linkedFileName2 ...]
-  title: 메타태그의 타이틀,
-  description: 메타태그의 디스크립션
+  title: "메타태그의 타이틀",
+  description: "메타태그의 디스크립션",
+  data: "글 본문",
+  webLink: url,
 }
 ```
