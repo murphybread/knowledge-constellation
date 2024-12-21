@@ -1,3 +1,5 @@
 *.json
 .env
 *.md
+
+node_modules
