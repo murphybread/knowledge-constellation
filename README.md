@@ -43,11 +43,13 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
 데이터구조
 link의 1번째 값은 항상 자기 자신의 링크
 별 1개의 구조
+
+```
 {
-id:
-filename: 실제 저장된 파일이름,
-tag: [tag1,tag2...],
-link: [selfFileName, linkedFileName1, linkedFileName2 ...]
-title: 메타태그의 타이틀,
-description: 메타태그의 디스크립션
+  id: 실제 저장된 파일이름,
+  tag: [tag1,tag2...],
+  link: [selfFileName, linkedFileName1, linkedFileName2 ...]
+  title: 메타태그의 타이틀,
+  description: 메타태그의 디스크립션
 }
+```
