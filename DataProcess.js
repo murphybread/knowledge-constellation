@@ -5,29 +5,48 @@ dotenv.config();
 
 const basePath = process.env.FILE_PATH;
 const targetFileName = process.env.FILE_NAME;
-const TARGET_DIRECTORY_NAME = process.env.TARGET_DIRECTORY_NAME;
+const TARGET_PREFIX = process.env.TARGET_PREFIX;
 
-// console.log(fs.readdirSync(basePath));
-// console.log(fs.statSync(basePath));
+const patterns = {
+  MAJOR: /^[A-Za-z]?\d00$/,
+  MINOR: /^[A-Za-z]?\d[1-9]0$/,
+  SUB: /^[A-Za-z]?\d[1-9]0\.\d{2}$/,
+};
+
+function checkVaild(stat, fullPath) {
+  const baseName = path.basename(fullPath);
+  const prefix = baseName.slice(0, 2);
+
+  if (stat.isDirectory()) {
+    return Object.values(patterns).some((pattern) => pattern.test(baseName));
+  }
+  console.log(prefix, TARGET_PREFIX);
+  if (stat.isFile() && prefix !== TARGET_PREFIX) {
+    return false;
+  }
+
+  return true;
+}
+
+const results = [];
 
 function findFiles(dir) {
-  let results = []; // 결과 배열
-
   const files = fs.readdirSync(dir);
 
   for (const file of files) {
-    console.log(file);
-    if (TARGET_DIRECTORY_NAME !== file) {
-      continue;
-    }
     const fullPath = path.join(dir, file); // 현재 경로
     const stat = fs.statSync(fullPath);
 
+    console.log(`fullPath ${fullPath}  stat ${stat}`);
+    if (!checkVaild(stat, fullPath)) {
+      continue;
+    }
+
+    console.log(`vaild ${fullPath}`);
+
     if (stat.isDirectory()) {
-      // 하위 디렉터리 재귀 탐색
-      results = results.concat(findFiles(fullPath));
+      findFiles(fullPath);
     } else {
-      // 파일이면 결과 배열에 추가
       results.push(fullPath);
     }
   }
@@ -35,7 +54,7 @@ function findFiles(dir) {
 }
 
 const foundFilePathArray = findFiles(basePath);
-console.log(foundFilePathArray);
+console.log(`foundFilePathArray ${foundFilePathArray}`);
 
 // if (foundPath) {
 //   fs.readFile(foundPath, "utf-8", (err, data) => {
