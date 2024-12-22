@@ -39,31 +39,49 @@
     <script type="module">
       import * as THREE from "three";
 
+      // scene , camera, renderer 파트
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(
-        45,
+        75,
         window.innerWidth / window.innerHeight,
         1,
-        500
+        50
       );
       camera.position.set(0, 0, 30);
       camera.lookAt(0, 0, 0);
-
       const renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
       document.body.appendChild(renderer.domElement);
 
-      const material = new THREE.LineBasicMaterial({ color: 0x0000ff });
-      const points = [];
-      points.push(new THREE.Vector3(-10, 0, 0));
-      points.push(new THREE.Vector3(0, 10, 0));
-      points.push(new THREE.Vector3(10, 0, 0));
-      const geometry = new THREE.BufferGeometry().setFromPoints(points);
-      const line = new THREE.Line(geometry, material);
-      scene.add(line);
+      // 도현 파트
+      const FORCE = 5;
+      const circleGeometry = new THREE.CircleGeometry(1, 16);
+      const circleMaterial = new THREE.MeshBasicMaterial({ color: 0xffd700 });
+      const star = new THREE.Mesh(circleGeometry, circleMaterial);
+      star.velocity = new THREE.Vector3(
+        (Math.random() - 0.5) * FORCE,
+        (Math.random() - 0.5) * FORCE,
+        (Math.random() - 0.5) * FORCE
+      );
+      scene.add(star);
+
+      function checkBoundary(ndcPosition, object) {
+        if (ndcPosition.x > 1 || ndcPosition.x < -1) {
+          object.velocity.x = -object.velocity.x;
+        }
+        if (ndcPosition.y > 1 || ndcPosition.y < -1) {
+          object.velocity.y = -object.velocity.y;
+        }
+        if (ndcPosition.z > 0.9 || ndcPosition.z < -0.9) {
+          object.velocity.z = -object.velocity.z;
+        }
+      }
 
       function animate() {
         requestAnimationFrame(animate);
+        star.position.add(star.velocity);
+        const worldPos = star.position.clone().project(camera);
+        checkBoundary(worldPos, star);
 
         renderer.render(scene, camera);
       }
