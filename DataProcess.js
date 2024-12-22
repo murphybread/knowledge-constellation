@@ -83,7 +83,9 @@ class Star {
     // 부정전방탐색 ##같이 #연속으로 발생하지않는 조건 and \s\n와같은 공백 전까지 한가지 이상의 문자, 전역 탐색
 
     // 코드블럭상의 내용 필터링
-    const filteredData = this.#data.replace(/```[\s\S]*?```/g, "");
+    const filteredData = this.#data
+      .replace(/```[\s\S]*?```/g, "")
+      .replace(/`[^]*`/g, "");
 
     const tag = filteredData.match(STAR_PATTERN.TAG);
     this.#tag = tag;
