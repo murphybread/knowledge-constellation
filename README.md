@@ -42,7 +42,7 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
     - [x] link 프로퍼티 감지 [[]] 형태로 Link관계 탐색
       - [x] 가장 먼저 나온 패턴 형태로 배열에 추가. 자기 자신링크에 대한 경우 0번쨰 인덱스
     - [x] title: metatag의 `title: `패턴의 첫번쨰 값 사용
-    - [] description: metatag의 `description: `패턴의 첫번 째 값 사용
+    - [x] description: metatag의 `description: `패턴의 첫번 째 값 사용
 - 3D 렌더링: Three.js를 활용하여 데이터 객체를 기준으로 별로 표현
   - 링크가 많은 만큼 별 크게 보이기
   - 링크가 존재하면 두 노드에 대해 선이 보여야함(나중에 별끼리 모였을때 별자리처럼 보이게)

@@ -18,7 +18,7 @@ const STAR_PATTERN = {
   LINK: /\[\[(.*?)\]\]/g,
   BOOK: /^KR\-.*/,
   TITLE: /title:\s(.*)/g,
-  DESCRIPTION: /dscription: /,
+  DESCRIPTION: /description:\s(.*)/g,
 };
 
 function checkVaild(stat, fullPath) {
@@ -76,6 +76,7 @@ class Star {
     this.#updateTags();
     this.#updateLinks();
     this.#updateTitle();
+    this.#updateDescription();
   }
 
   #updateTags() {
@@ -102,6 +103,11 @@ class Star {
   #updateTitle() {
     const matches = [...this.#data.matchAll(STAR_PATTERN.TITLE)][0][1];
     this.#title = matches;
+  }
+
+  #updateDescription() {
+    const matches = [...this.#data.matchAll(STAR_PATTERN.DESCRIPTION)][0][1];
+    this.#description = matches;
   }
   getStar() {
     return {
