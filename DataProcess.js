@@ -17,6 +17,8 @@ const STAR_PATTERN = {
   TAG: /#(?!#)[^\s\n]+/g,
   LINK: /\[\[(.*?)\]\]/g,
   BOOK: /^KR\-.*/,
+  TITLE: /title:\s(.*)/g,
+  DESCRIPTION: /dscription: /,
 };
 
 function checkVaild(stat, fullPath) {
@@ -73,6 +75,7 @@ class Star {
   initialize() {
     this.#updateTags();
     this.#updateLinks();
+    this.#updateTitle();
   }
 
   #updateTags() {
@@ -94,6 +97,11 @@ class Star {
     // /^KR\-.*/ KR-로 시작하는지 여부로 Link 패턴여부 Vaildate
     const filteredLink = link.filter((link) => STAR_PATTERN.BOOK.test(link));
     this.#link = filteredLink;
+  }
+
+  #updateTitle() {
+    const matches = [...this.#data.matchAll(STAR_PATTERN.TITLE)][0][1];
+    this.#title = matches;
   }
   getStar() {
     return {
