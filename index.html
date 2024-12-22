@@ -11,9 +11,23 @@
       canvas {
         display: block;
       }
+      #info {
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 60;
+        display: block;
+        color: white;
+        font-size: 20px;
+        pointer-events: none;
+      }
     </style>
   </head>
   <body>
+    <div id="info">This is a text overlay using DOM + CSS</div>
+
     <script type="importmap">
       {
         "imports": {
