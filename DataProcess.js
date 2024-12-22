@@ -7,10 +7,14 @@ const basePath = process.env.FILE_PATH;
 const targetFileName = process.env.FILE_NAME;
 const TARGET_PREFIX = process.env.TARGET_PREFIX;
 
-const patterns = {
+const PATTERENS = {
   MAJOR: /^[A-Za-z]?\d00$/,
   MINOR: /^[A-Za-z]?\d[1-9]0$/,
   SUB: /^[A-Za-z]?\d[1-9]0\.\d{2}$/,
+};
+
+const STAR_PATTERENS = {
+  TAGS: /#(?!#)[^\s\n]+/g,
 };
 
 function checkVaild(stat, fullPath) {
@@ -18,7 +22,7 @@ function checkVaild(stat, fullPath) {
   const prefix = baseName.slice(0, 2);
 
   if (stat.isDirectory()) {
-    return Object.values(patterns).some((pattern) => pattern.test(baseName));
+    return Object.values(PATTERENS).some((pattern) => pattern.test(baseName));
   }
   if (stat.isFile() && prefix.toLowerCase() !== TARGET_PREFIX.toLowerCase()) {
     return false;
@@ -68,12 +72,15 @@ class Star {
 
   #updateTags() {
     // 부정전방탐색 ##같이 #연속으로 발생하지않는 조건 and \s\n와같은 공백 전까지 한가지 이상의 문자, 전역 탐색
-    const pattern = /#(?!#)[^\s\n]+/g;
-    const tags = this.#data.match(pattern);
+
+    const tags = this.#data.match(STAR_PATTERENS.TAGS);
 
     this.#tag = tags;
   }
 
+  #updateLinks() {
+    const pattern = /#(?!#)[^\s\n]+/g;
+  }
   getStar() {
     return {
       id: this.#id,
