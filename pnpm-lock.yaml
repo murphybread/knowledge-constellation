@@ -11,6 +11,9 @@ importers:
       dotenv:
         specifier: ^16.4.7
         version: 16.4.7
+      three.js:
+        specifier: ^0.77.1
+        version: 0.77.1
 
 packages:
 
@@ -18,6 +21,18 @@ packages:
     resolution: {integrity: sha512-47qPchRCykZC03FhkYAhrvwU4xDBFIj1QPqaarj6mdM/hgUzfPHcpkHJOn3mJAufFeeAxAzeGsr5X0M4k6fLZQ==}
     engines: {node: '>=12'}
 
+  three.js@0.77.1:
+    resolution: {integrity: sha512-lVMYlBXhhHlZtsF+cQdev6WCm2fSWs3I+A6Z63j6TBmkVXOYgdo9AUCRemfsw5mllqWx23VubJ5Qt8/uWKQpJA==}
+
+  three@0.77.0:
+    resolution: {integrity: sha512-YWEp8ahs2l+6fAFVbanLVQoSBwVq5jDct3nZdBSHHXb5I/w5oy/LCMAzIOAguKWclRqcjR4W1BeP5QBnftGbpA==}
+
 snapshots:
 
   dotenv@16.4.7: {}
+
+  three.js@0.77.1:
+    dependencies:
+      three: 0.77.0
+
+  three@0.77.0: {}
