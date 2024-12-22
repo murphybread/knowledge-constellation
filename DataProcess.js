@@ -6,6 +6,7 @@ dotenv.config();
 const basePath = process.env.FILE_PATH;
 const targetFileName = process.env.FILE_NAME;
 const TARGET_PREFIX = process.env.TARGET_PREFIX;
+const FILE_NAME = "data.json";
 
 const BOOK_NAME_PATTERN = {
   MAJOR: /^[A-Za-z]?\d00$/,
@@ -124,16 +125,6 @@ class Star {
   }
 }
 
-// {
-//   id: "실제 저장된 파일이름",
-//   tag: [tag1,tag2...],
-//   link: [selfFileName, linkedFileName1, linkedFileName2 ...]
-//   title: "메타태그의 타이틀",
-//   description: "메타태그의 디스크립션",
-//   data: "글 본문",
-//   webLink: url,
-// }
-
 async function updateJsonFromFiles(FilePathArray) {
   const allStars = [];
   for (const filePath of FilePathArray) {
@@ -153,7 +144,13 @@ async function processFiles() {
   const FilePathArray = findFiles(basePath);
 
   const allStars = await updateJsonFromFiles(FilePathArray);
-  console.log(JSON.stringify(allStars.slice(0, 5), null, 2));
+  fs.writeFile(FILE_NAME, JSON.stringify(allStars, null, 2), (err) => {
+    if (err) {
+      console.log(err.stack);
+    } else {
+      console.log(FILE_NAME);
+    }
+  });
 }
 
 processFiles();
