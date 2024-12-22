@@ -62,9 +62,19 @@ class Star {
     this.#data = data;
   }
 
-  initialize() {}
+  initialize() {
+    this.#updateTags();
+  }
 
-  getStart() {
+  #updateTags() {
+    // 부정전방탐색 ##같이 #연속으로 발생하지않는 조건 and \s\n와같은 공백 전까지 한가지 이상의 문자, 전역 탐색
+    const pattern = /#(?!#)[^\s\n]+/g;
+    const tags = this.#data.match(pattern);
+
+    this.#tag = tags;
+  }
+
+  getStar() {
     return {
       id: this.#id,
       tag: this.#tag,
@@ -93,7 +103,8 @@ async function updateJsonFromFiles(FilePathArray) {
     try {
       const data = await fs.promises.readFile(filePath, "utf-8");
       const star = new Star(filePath, data);
-      allStars.push(star.getStart());
+      star.initialize();
+      allStars.push(star.getStar());
     } catch (err) {
       console.error("파일 읽기 오류:", err);
     }
