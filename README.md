@@ -37,6 +37,7 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
 
 예시 사이트
 [서울대 지식 유니버스](https://likesnu.snu.ac.kr/usr/popup/popupMobileUniverse.do)
+![image](https://github.com/user-attachments/assets/a3d42253-3cdf-4327-afa1-a8a66c268c79)
 
 
 ### 기능 목록
