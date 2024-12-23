@@ -42,8 +42,10 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
 ### 기능 목록
 
 - 데이터 변환 작업: 현재 작성한 블로그글 MD파일들을 목적에 따라 JSON형태로 변환
+
   - recursive하게 가장 상위 디렉터리에서 시작하여 파일 탐색
   - 유효한 파일 경로들 탐색 후 각 파일 별로 해당 작업 수행
+
     - 정규표현식 활용하여 블로그글에 해당하는 파일인 경우 경로 반환 후 배열에 추가
     - [x] id 필터링된 경로값으로 등록
     - [x] tag 프로퍼티 감지 #문자 형태를 정규표현식으로 사용하여 전처리후 저장
@@ -52,15 +54,25 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
     - [x] title: metatag의 `title: `패턴의 첫번쨰 값 사용
     - [x] description: metatag의 `description: `패턴의 첫번 째 값 사용
     - [] weblink 실제 웹상에서 배포된 글 링크. 추후 웹연동시 고려하기
-    - [ ] position 태그에 기반. 레벨에 따라 그룹 분류
+    - [ ] position 태그에 기반. 레벨에 따라 그룹 분류 (r,phi, theta)
+
+      - Cluster (r, 0 , 360도 8등분)
+      - Assocation (2r, cos(pi/4(n-1)) , pi/12[2- abs( (((n-1)+2))mod8)-4) ])
+      - Constellation (4r, 2\*cos(pi/4(n-1)) ,pi/12[2- abs( (((n-1)+2))mod8)-4) ])
+      - Star 해당 constellation중심으로 랜덤한 값의 r,phi,theta추가
+
     - [x] group 해당 글이 어떤 그룹에 속하는지 고정된 4개의 값중 하나 [Cluster, Association, Constellation, Star]
+
       - 단위: 별 [[KR-010.10 a]](글 1개)
       - 단위: 별자리 - [[KR-010.10]] HTML,CSS,JavaScript (글 여러개)
       - 단위: 성협 [[KR-010]] Dev (별자리가 1개 이상)
       - 단위: 성단 [[KR-000]] 기술 스택 (성협이 1개이상)
       - 단 type이 P인경우 별->별자리->성협만을 단위로 가짐
+
     - [x] type P or KR을 확인하는 태그. P의 경우 개인적인 내용의 글이라는 의미
+
   - [x] 최종 star 클래스의 값을 배열에 담아 파일 형태로 저장
+
 - 3D 렌더링: Three.js를 활용하여 데이터 객체를 기준으로 별로 표현
   - 검색 창
     - 노드 제목을 통한 검색 기능
