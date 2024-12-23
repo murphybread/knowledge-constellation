@@ -53,11 +53,12 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
     - [x] description: metatag의 `description: `패턴의 첫번 째 값 사용
     - [] weblink 실제 웹상에서 배포된 글 링크. 추후 웹연동시 고려하기
     - [ ] position 태그에 기반. 레벨에 따라 그룹 분류
-    - [ ] group 해당 글이 어떤 그룹에 속하는지 고정된 4개의 값중 하나 Cluster or Association or Constellation or Star
+    - [x] group 해당 글이 어떤 그룹에 속하는지 고정된 4개의 값중 하나 [Cluster, Association, Constellation, Star]
       - 단위: 별 [[KR-010.10 a]](글 1개)
       - 단위: 별자리 - [[KR-010.10]] HTML,CSS,JavaScript (글 여러개)
       - 단위: 성협 [[KR-010]] Dev (별자리가 1개 이상)
       - 단위: 성단 [[KR-000]] 기술 스택 (성협이 1개이상)
+      - 단 type이 P인경우 별->별자리->성협만을 단위로 가짐
     - [x] type P or KR을 확인하는 태그. P의 경우 개인적인 내용의 글이라는 의미
   - [x] 최종 star 클래스의 값을 배열에 담아 파일 형태로 저장
 - 3D 렌더링: Three.js를 활용하여 데이터 객체를 기준으로 별로 표현

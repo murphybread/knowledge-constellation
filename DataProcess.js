@@ -7,7 +7,7 @@ const basePath = process.env.FILE_PATH;
 const TARGET_PREFIX = process.env.TARGET_PREFIX;
 const FILE_NAME = "data.json";
 
-const BOOK_NAME_PATTERN = {
+const BOOK_DIRECTORY_NAME_PATTERN = {
   MAJOR: /^[A-Za-z]?\d00$/,
   MINOR: /^[A-Za-z]?\d[1-9]0$/,
   SUB: /^[A-Za-z]?\d[1-9]0\.\d{2}$/,
@@ -19,6 +19,15 @@ const STAR_PATTERN = {
   BOOK: /^KR\-.*/,
   TITLE: /title:\s(.*)/g,
   DESCRIPTION: /description:\s(.*)/g,
+  TYPE: /^KR-P-/,
+  GROUP: {
+    STAR: /[a-zA-Z]$/,
+    CONSTELLATION_P: /\d[1-9]0$/,
+    ASSOCIATION_P: /\d00$/,
+    CONSTELLATION_KR: /\.\d{2}$/,
+    ASSOCIATION_KR: /\d[1-9]0$/,
+    CLUSTER: /\d00$/,
+  },
 };
 
 function checkVaild(stat, fullPath) {
@@ -26,7 +35,7 @@ function checkVaild(stat, fullPath) {
   const prefix = baseName.slice(0, 2);
 
   if (stat.isDirectory()) {
-    return Object.values(BOOK_NAME_PATTERN).some((pattern) =>
+    return Object.values(BOOK_DIRECTORY_NAME_PATTERN).some((pattern) =>
       pattern.test(baseName)
     );
   }
@@ -68,6 +77,7 @@ class Star {
   #webLink = "";
   #position = [0, 0, 0];
   #type = "KR";
+  #group = "";
 
   constructor(filePath, data) {
     this.#id = path.basename(filePath);
@@ -80,18 +90,46 @@ class Star {
     this.#updateTitle();
     this.#updateDescription();
     this.#updateType();
+    this.#updateGroup();
   }
 
   // #updatePosition() {
   //   #position =
   // }
+  #updateGroup() {
+    const id = this.#id.replace(/\.md$/, "");
+
+    if (this.#type === "P") {
+      if (id.match(STAR_PATTERN.GROUP.STAR)) {
+        this.#group = "star";
+      } else if (id.match(STAR_PATTERN.GROUP.CONSTELLATION_P)) {
+        this.#group = "constellation";
+      } else if (id.match(STAR_PATTERN.GROUP.ASSOCIATION_P)) {
+        this.#group = "association";
+      } else {
+        this.#group = "unknown";
+      }
+    } else {
+      if (id.match(STAR_PATTERN.GROUP.STAR)) {
+        this.#group = "star";
+      } else if (id.match(STAR_PATTERN.GROUP.CONSTELLATION_KR)) {
+        this.#group = "constellation";
+      } else if (id.match(STAR_PATTERN.GROUP.ASSOCIATION_KR)) {
+        this.#group = "association";
+      } else if (id.match(STAR_PATTERN.GROUP.CLUSTER)) {
+        this.#group = "cluster";
+      } else {
+        this.#group = "unknown";
+      }
+    }
+  }
   #updateType() {
-    if (this.#id.match(/^KR-P-/)) {
+    if (this.#id.match(STAR_PATTERN.TYPE)) {
       this.#type = "P";
     }
   }
   #updateTags() {
-    // 부정전방탐색 ##같이 #연속으로 발생하지않는 조건 and \s\n와같은 공백 전까지 한가지 이상의 문자, 전역 탐색
+    // /#(?!#)[^\s\n]+/g, 부정전방탐색 ##같이 #연속으로 발생하지않는 조건 and \s\n와같은 공백 전까지 한가지 이상의 문자, 전역 탐색
 
     // 코드블럭상의 내용 필터링
     const filteredData = this.#data
@@ -132,6 +170,7 @@ class Star {
       data: this.#data,
       webLink: this.#webLink,
       position: this.#position,
+      group: this.#group,
       type: this.#type,
     };
   }
