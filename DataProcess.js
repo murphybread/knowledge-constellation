@@ -4,7 +4,6 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const basePath = process.env.FILE_PATH;
-const targetFileName = process.env.FILE_NAME;
 const TARGET_PREFIX = process.env.TARGET_PREFIX;
 const FILE_NAME = "data.json";
 
@@ -67,6 +66,8 @@ class Star {
   #description = "";
   #data;
   #webLink = "";
+  #position = [0, 0, 0];
+  #type = "KR";
 
   constructor(filePath, data) {
     this.#id = path.basename(filePath);
@@ -78,8 +79,17 @@ class Star {
     this.#updateLinks();
     this.#updateTitle();
     this.#updateDescription();
+    this.#updateType();
   }
 
+  // #updatePosition() {
+  //   #position =
+  // }
+  #updateType() {
+    if (this.#id.match(/^KR-P-/)) {
+      this.#type = "P";
+    }
+  }
   #updateTags() {
     // 부정전방탐색 ##같이 #연속으로 발생하지않는 조건 and \s\n와같은 공백 전까지 한가지 이상의 문자, 전역 탐색
 
@@ -121,6 +131,8 @@ class Star {
       description: this.#description,
       data: this.#data,
       webLink: this.#webLink,
+      position: this.#position,
+      type: this.#type,
     };
   }
 }

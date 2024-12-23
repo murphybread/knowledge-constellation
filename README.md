@@ -2,8 +2,8 @@
 
 블로그글들을 별처럼 표현하여 전체적인 지식베이스 유니버스를 보여주는 서비스입니다
 
-
 시나리오등에 언급되지 않는 내용은 임의로 판단하여 작성할 것
+
 ## 시나리오
 
 어느 정도 블로그에 작성된 글이 쌓인 머피는 자신의 블로그글이 좀더 화려한 방식으로 방문자에게 보여주기를 원합니다.
@@ -39,7 +39,6 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
 [서울대 지식 유니버스](https://likesnu.snu.ac.kr/usr/popup/popupMobileUniverse.do)
 ![image](https://github.com/user-attachments/assets/a3d42253-3cdf-4327-afa1-a8a66c268c79)
 
-
 ### 기능 목록
 
 - 데이터 변환 작업: 현재 작성한 블로그글 MD파일들을 목적에 따라 JSON형태로 변환
@@ -53,6 +52,13 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
     - [x] title: metatag의 `title: `패턴의 첫번쨰 값 사용
     - [x] description: metatag의 `description: `패턴의 첫번 째 값 사용
     - [] weblink 실제 웹상에서 배포된 글 링크. 추후 웹연동시 고려하기
+    - [ ] position 태그에 기반. 레벨에 따라 그룹 분류
+    - [ ] group 해당 글이 어떤 그룹에 속하는지 고정된 4개의 값중 하나 Cluster or Association or Constellation or Star
+      - 단위: 별 [[KR-010.10 a]](글 1개)
+      - 단위: 별자리 - [[KR-010.10]] HTML,CSS,JavaScript (글 여러개)
+      - 단위: 성협 [[KR-010]] Dev (별자리가 1개 이상)
+      - 단위: 성단 [[KR-000]] 기술 스택 (성협이 1개이상)
+    - [x] type P or KR을 확인하는 태그. P의 경우 개인적인 내용의 글이라는 의미
   - [x] 최종 star 클래스의 값을 배열에 담아 파일 형태로 저장
 - 3D 렌더링: Three.js를 활용하여 데이터 객체를 기준으로 별로 표현
   - 검색 창
@@ -88,5 +94,8 @@ link의 1번째 값은 항상 자기 자신의 링크
   description: "메타태그의 디스크립션",
   data: "글 본문",
   webLink: url,
+  position: [x,y,z],
+  group: [Cluster or Association or Constellation or Star]
+  type: [KR or P]
 }
 ```
