@@ -57,8 +57,8 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
     - [ ] position 태그에 기반. 레벨에 따라 그룹 분류 (r,phi, theta)
 
       - Cluster (r, 0 , 360도 8등분)
-      - Assocation (2r, cos(pi/4(n-1)) , pi/12[2- abs( (((n-1)+2))mod8)-4) ])
-      - Constellation (4r, 2\*cos(pi/4(n-1)) ,pi/12[2- abs( (((n-1)+2))mod8)-4) ])
+      - Assocation (2r, 분기처리) , pi/12[2- abs( (((n-1)+2))mod8)-4) ])
+      - Constellation (4r, 분기처리 ,pi/12[2- abs( (((n-1)+2))mod8)-4) ])
       - Star 해당 constellation중심으로 랜덤한 값의 r,phi,theta추가
 
     - [x] group 해당 글이 어떤 그룹에 속하는지 고정된 4개의 값중 하나 [Cluster, Association, Constellation, Star]
