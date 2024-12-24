@@ -47,7 +47,7 @@
         1,
         50
       );
-      camera.position.set(0, 0, 30);
+      camera.position.set(0, 40, 0);
       camera.lookAt(0, 0, 0);
       const renderer = new THREE.WebGLRenderer();
       renderer.setSize(window.innerWidth, window.innerHeight);
@@ -63,7 +63,33 @@
         (Math.random() - 0.5) * FORCE,
         (Math.random() - 0.5) * FORCE
       );
-      scene.add(star);
+      // 원 생성 및 설정
+      const sphericalObjectGeo = new THREE.SphereGeometry(0.5, 32, 16);
+      const colors = [
+        0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff,
+      ]; // 다양한 색상
+      const angles = [
+        0,
+        Math.PI / 6,
+        Math.PI / 3,
+        Math.PI / 4,
+        Math.PI / 2,
+        Math.PI,
+      ]; // 경도 값
+
+      for (let i = 0; i < angles.length; i++) {
+        const sphericalObjectMat = new THREE.MeshBasicMaterial({
+          color: colors[i],
+        });
+        const sphericalObject = new THREE.Mesh(
+          sphericalObjectGeo,
+          sphericalObjectMat
+        );
+
+        const spherical = new THREE.Spherical(10, Math.PI / 2, angles[i]); // 경도만 변경
+        sphericalObject.position.setFromSpherical(spherical);
+        scene.add(sphericalObject);
+      }
 
       function checkBoundary(ndcPosition, object) {
         if (ndcPosition.x > 1 || ndcPosition.x < -1) {
