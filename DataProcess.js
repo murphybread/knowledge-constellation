@@ -13,6 +13,8 @@ const BOOK_DIRECTORY_NAME_PATTERN = {
   SUB: /^[A-Za-z]?\d[1-9]0\.\d{2}$/,
 };
 
+const START_DISTANCE = 20;
+
 const STAR_PATTERN = {
   TAG: /#(?!#)[^\s\n]+/g,
   LINK: /\[\[(.*?)\]\]/g,
@@ -91,11 +93,37 @@ class Star {
     this.#updateDescription();
     this.#updateType();
     this.#updateGroup();
+    this.#updatePosition();
   }
 
-  // #updatePosition() {
-  //   #position =
-  // }
+  #updatePosition() {
+    if (this.#type === "KR") {
+      let n = 0;
+      switch (this.#group) {
+        case "cluster":
+          n = parseInt(Number(this.#id.replace(/\.md$/, "").slice(-3)) / 100);
+          this.#position = [
+            START_DISTANCE,
+            Math.PI / 2,
+            (n + 1) * (Math.PI / 4),
+          ];
+          break;
+        case "association":
+          n = parseInt(Number(this.#id.replace(/\.md$/, "").slice(-2)) / 10);
+          this.#position = [
+            2 * START_DISTANCE,
+            (Math.PI / 12) * (4 + 2 * Math.min(n - 1, 8 - n - 1)),
+            (Math.PI / 12) * (2 - Math.abs(((n - 1 + 2) % 8) - 4)),
+          ];
+
+          break;
+        case "constellation":
+          break;
+        case "star":
+          break;
+      }
+    }
+  }
   #updateGroup() {
     const id = this.#id.replace(/\.md$/, "");
 
@@ -183,7 +211,9 @@ async function updateJsonFromFiles(FilePathArray) {
       const data = await fs.promises.readFile(filePath, "utf-8");
       const star = new Star(filePath, data);
       star.initialize();
-      allStars.push(star.getStar());
+      if (star.getStar().group === "cluster") {
+        allStars.push(star.getStar());
+      }
     } catch (err) {
       console.error("파일 읽기 오류:", err);
     }
@@ -199,7 +229,7 @@ async function processFiles() {
     if (err) {
       console.log(err.stack);
     } else {
-      console.log(FILE_NAME);
+      console.log(`created ${FILE_NAME}`);
     }
   });
 }

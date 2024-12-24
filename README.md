@@ -56,9 +56,9 @@ description: 디버깅과 관련된 부분중 기술적인 내용에 대한 글 
     - [] weblink 실제 웹상에서 배포된 글 링크. 추후 웹연동시 고려하기
     - [ ] position 태그에 기반. 레벨에 따라 그룹 분류 (r,phi, theta)
 
-      - Cluster (r, 0 , 360도 8등분)
-      - Assocation (2r, 분기처리) , pi/12[2- abs( (((n-1)+2))mod8)-4) ])
-      - Constellation (4r, 분기처리 ,pi/12[2- abs( (((n-1)+2))mod8)-4) ])
+      - Cluster (r, Math.PI/2 , 360도 8등분)
+      - Assocation (2r, Math.PI/12 (4 + 2\* Math.min(n-1,8-)n-1)) ) , (Math.PI / 12) \* (2 - Math.abs(((n - 1 + 2) % 8) - 4)))
+      - Constellation (4r, 2\*pi/4(n-1) ,pi/12[2- abs( (((n-1)+2))mod8)-4) ])
       - Star 해당 constellation중심으로 랜덤한 값의 r,phi,theta추가
 
     - [x] group 해당 글이 어떤 그룹에 속하는지 고정된 4개의 값중 하나 [Cluster, Association, Constellation, Star]

@@ -37,81 +37,9 @@
     </script>
 
     <script type="module">
-      import * as THREE from "three";
+      import { createStarScene } from "./createStar.js";
 
-      // scene , camera, renderer 파트
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        1,
-        50
-      );
-      camera.position.set(0, 40, 0);
-      camera.lookAt(0, 0, 0);
-      const renderer = new THREE.WebGLRenderer();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-      document.body.appendChild(renderer.domElement);
-
-      // 도현 파트
-      const FORCE = 5;
-      const circleGeometry = new THREE.CircleGeometry(1, 16);
-      const circleMaterial = new THREE.MeshBasicMaterial({ color: 0xffd700 });
-      const star = new THREE.Mesh(circleGeometry, circleMaterial);
-      star.velocity = new THREE.Vector3(
-        (Math.random() - 0.5) * FORCE,
-        (Math.random() - 0.5) * FORCE,
-        (Math.random() - 0.5) * FORCE
-      );
-      // 원 생성 및 설정
-      const sphericalObjectGeo = new THREE.SphereGeometry(0.5, 32, 16);
-      const colors = [
-        0xff0000, 0x00ff00, 0x0000ff, 0xffff00, 0xff00ff, 0x00ffff,
-      ]; // 다양한 색상
-      const angles = [
-        0,
-        Math.PI / 6,
-        Math.PI / 3,
-        Math.PI / 4,
-        Math.PI / 2,
-        Math.PI,
-      ]; // 경도 값
-
-      for (let i = 0; i < angles.length; i++) {
-        const sphericalObjectMat = new THREE.MeshBasicMaterial({
-          color: colors[i],
-        });
-        const sphericalObject = new THREE.Mesh(
-          sphericalObjectGeo,
-          sphericalObjectMat
-        );
-
-        const spherical = new THREE.Spherical(10, Math.PI / 2, angles[i]); // 경도만 변경
-        sphericalObject.position.setFromSpherical(spherical);
-        scene.add(sphericalObject);
-      }
-
-      function checkBoundary(ndcPosition, object) {
-        if (ndcPosition.x > 1 || ndcPosition.x < -1) {
-          object.velocity.x = -object.velocity.x;
-        }
-        if (ndcPosition.y > 1 || ndcPosition.y < -1) {
-          object.velocity.y = -object.velocity.y;
-        }
-        if (ndcPosition.z > 0.9 || ndcPosition.z < -0.9) {
-          object.velocity.z = -object.velocity.z;
-        }
-      }
-
-      function animate() {
-        requestAnimationFrame(animate);
-        star.position.add(star.velocity);
-        const worldPos = star.position.clone().project(camera);
-        checkBoundary(worldPos, star);
-
-        renderer.render(scene, camera);
-      }
-      animate();
+      createStarScene();
     </script>
   </body>
 </html>
